@@ -1,0 +1,125 @@
+/* 网页版专用样式 - 适用于全屏显示 */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f5f5f5;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+.input-section,
+.output-section {
+    margin-bottom: 25px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #555;
+}
+
+textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+#inputCommand {
+    height: 100px;
+    resize: vertical;
+}
+
+.output-item {
+    margin-bottom: 20px;
+}
+
+.output-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.copy-button {
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.copy-button:hover {
+    background-color: #0056b3;
+}
+
+.copy-button.copied {
+    background-color: #28a745;
+    position: relative;
+}
+
+.copy-button.copied::after {
+    content: "已复制！";
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #28a745;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+    z-index: 1000;
+}
+
+.github-link {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    font-size: 14px;
+    color: #666;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 8px 12px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.github-link:hover {
+    color: #0366d6;
+    background-color: rgba(255, 255, 255, 1);
+    text-decoration: none;
+    transform: translateY(-2px);
+}
+
+.github-link::before {
+    content: "⭐";
+    font-size: 16px;
+}
