@@ -1,10 +1,14 @@
 {
   "manifest_version": 3,
   "name": "iflow MCP 助手 (PowerShell)",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "一键转换 iflow MCP 命令为 PowerShell 7 兼容格式。",
   "action": {
     "default_popup": "popup.html",
+    "default_icon": {
+      "16": "images/icon16.png",
+      "48": "images/icon48.png"
+    },
     "default_title": "iflow MCP 助手"
   },
   "icons": {
@@ -14,5 +18,15 @@
   },
   "permissions": [
     "clipboardWrite"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://platform.iflow.cn/mcp",
+        "https://platform.iflow.cn/mcp/*"
+      ],
+      "js": ["content_script.js"],
+      "css": ["content_style.css"]
+    }
   ]
 }

@@ -1,3 +1,5 @@
+/* Popup 插件专用样式 - 适用于小窗口弹窗 */
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -34,6 +36,7 @@ label {
     margin-bottom: 8px;
     font-weight: bold;
     color: #555;
+    font-size: 14px;
 }
 
 textarea {

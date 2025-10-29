@@ -7,7 +7,7 @@
 [![Language](https://img.shields.io/badge/language-中文-blue.svg)](README.md)
 [![Language](https://img.shields.io/badge/language-English-red.svg)](README_EN.md)
 
-一个轻量级的工具，提供网页版和 Chrome 插件版，用于转换从 `iflow` 平台复制的 MCP 安装命令，使其兼容 PowerShell 7 环境。
+一个功能强大的"三合一"工具，提供网页版、Chrome 插件弹窗版和内容注入版，用于转换从 `iflow` 平台复制的 MCP 安装命令，使其兼容 PowerShell 7 环境。
 
 ## 🚀 功能特点
 
@@ -16,18 +16,20 @@
 - **一键复制**：点击按钮即可复制转换后的命令到剪贴板
 - **简洁界面**：专业、易用的用户界面设计
 - **纯前端实现**：无需服务器，完全在浏览器中运行
-- **Chrome 插件版**：提供便捷的浏览器插件，随时可用
+- **三合一架构**：网页版、插件弹窗版、内容注入版三种使用方式
+- **智能注入**：在 iflow 官网自动添加 PowerShell 复制按钮
+- **精确生效**：内容脚本仅在 iflow 官网生效，不干扰其他网站
 
 ## 📖 使用说明
 
-### 🌐 网页版使用
+### 🌐 V1.0 网页版使用
 
 1. 打开 [GitHub Pages](https://albert-lsk.github.io/iflow-mcp-helper/) 页面
 2. 将从 `iflow` 平台复制的原始命令粘贴到输入框中
 3. 查看下方两个输出框中的转换结果
 4. 点击"复制"按钮将需要的版本复制到剪贴板
 
-### 🧩 Chrome 插件版使用
+### 🧩 V2.0 Popup 插件版使用
 
 1. **安装插件**：
    - 下载插件文件到本地
@@ -39,6 +41,16 @@
    - 点击 Chrome 工具栏中的插件图标
    - 在弹出窗口中粘贴原始命令
    - 查看转换结果并复制需要的版本
+
+### 🎯 V3.0 Content Script 版使用
+
+1. **安装插件**（同 V2.0）
+2. **自动生效**：
+   - 访问 [iflow MCP 市场](https://platform.iflow.cn/mcp)
+   - 浏览任意 MCP 服务
+   - 点击安装按钮弹出命令窗口
+   - 在原始"复制"按钮旁边会自动出现"复制 (PowerShell)"按钮
+   - 点击即可直接复制 PowerShell 兼容格式的命令
 
 ### 基本操作
 
@@ -76,26 +88,39 @@
 
 ```
 iflow-mcp-helper/
-├── manifest.json       # Chrome 插件配置文件
-├── popup.html          # 插件弹出页面
-├── index.html          # 网页版主页面
-├── style.css           # 样式表
-├── script.js           # 转换逻辑
-├── images/             # 插件图标文件夹
-│   └── icon_placeholder.txt
-├── README.md           # 中文项目文档
-├── README_EN.md        # 英文项目文档
-└── LICENSE             # 许可证
+├── V1.0 网页版
+│   ├── index.html          # 网页版主页面
+│   ├── style_web.css       # 网页版样式（800px 宽度）
+│   └── script.js           # 转换逻辑
+│
+├── V2.0 Popup 插件版
+│   ├── popup.html          # 插件弹出页面
+│   ├── popup_style.css     # 弹窗版样式（380px 宽度）
+│   └── script.js           # 转换逻辑（与网页版共享）
+│
+├── V3.0 Content Script 版
+│   ├── manifest.json       # Chrome 插件配置文件
+│   ├── content_script.js   # 内容注入脚本
+│   ├── content_style.css   # 内容注入样式
+│   └── images/             # 插件图标文件夹
+│       ├── icon16.png
+│       ├── icon48.png
+│       └── icon128.png
+│
+├── README.md               # 中文项目文档
+├── README_EN.md            # 英文项目文档
+└── LICENSE                 # 许可证
 ```
 
 ## 🌐 在线使用
 
-- **网页版**：访问 [GitHub Pages](https://albert-lsk.github.io/iflow-mcp-helper/) 直接使用工具
-- **Chrome 插件版**：下载并安装插件，在浏览器中随时使用
+- **V1.0 网页版**：访问 [GitHub Pages](https://albert-lsk.github.io/iflow-mcp-helper/) 直接使用工具
+- **V2.0 Popup 插件版**：下载并安装插件，点击工具栏图标随时使用
+- **V3.0 Content Script 版**：安装插件后，访问 iflow 官网自动生效
 
 ## 💻 本地运行
 
-### 网页版本地运行
+### V1.0 网页版本地运行
 
 1. 克隆仓库：
    ```bash
@@ -116,13 +141,14 @@ iflow-mcp-helper/
 
 3. 访问 `http://localhost:8000`
 
-### Chrome 插件版本地安装
+### V2.0 & V3.0 Chrome 插件版本地安装
 
 1. 克隆仓库（同上）
 2. 准备插件图标文件（16px, 48px, 128px）
 3. 在 Chrome 中打开 `chrome://extensions/`
 4. 开启"开发者模式"
 5. 点击"加载已解压的扩展程序"，选择项目文件夹
+6. 重新加载插件以应用更改
 
 ## 🔧 转换逻辑详解
 
@@ -161,6 +187,14 @@ iflow-mcp-helper/
 
 <details>
 <summary>版本历史</summary>
+
+### v1.2.0 (2024-10-29)
+- 🎯 新增 Content Script 内容注入功能
+- 🔄 重构为"三合一"架构，三个版本完全独立
+- 🧠 增强 DOM 监听和命令检测逻辑
+- 🎨 优化网页版和插件版的界面样式
+- 🔧 修复 iflow 官网匹配规则
+- 📝 完善文档和使用指南
 
 ### v1.1.0 (2024-10-29)
 - 🧩 新增 Chrome 插件版本
