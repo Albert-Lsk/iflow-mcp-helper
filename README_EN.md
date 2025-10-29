@@ -1,13 +1,13 @@
 # iflow MCP Helper (PowerShell Edition)
 
-[![GitHub stars](https://img.shields.io/github/stars/your-username/iflow-mcp-helper.svg?style=social&label=Star)](https://github.com/your-username/iflow-mcp-helper)
-[![GitHub forks](https://img.shields.io/github/forks/your-username/iflow-mcp-helper.svg?style=social&label=Fork)](https://github.com/your-username/iflow-mcp-helper)
-[![GitHub license](https://img.shields.io/github/license/your-username/iflow-mcp-helper.svg)](https://github.com/your-username/iflow-mcp-helper/blob/main/LICENSE)
-[![GitHub release](https://img.shields.io/github/release/your-username/iflow-mcp-helper.svg)](https://github.com/your-username/iflow-mcp-helper/releases)
+[![GitHub stars](https://img.shields.io/github/stars/Albert-Lsk/iflow-mcp-helper.svg?style=social&label=Star)](https://github.com/Albert-Lsk/iflow-mcp-helper)
+[![GitHub forks](https://img.shields.io/github/forks/Albert-Lsk/iflow-mcp-helper.svg?style=social&label=Fork)](https://github.com/Albert-Lsk/iflow-mcp-helper)
+[![GitHub license](https://img.shields.io/github/license/Albert-Lsk/iflow-mcp-helper.svg)](https://github.com/Albert-Lsk/iflow-mcp-helper/blob/main/LICENSE)
+[![GitHub release](https://img.shields.io/github/release/Albert-Lsk/iflow-mcp-helper.svg)](https://github.com/Albert-Lsk/iflow-mcp-helper/releases)
 [![Language](https://img.shields.io/badge/language-中文-blue.svg)](README.md)
 [![Language](https://img.shields.io/badge/language-English-red.svg)](README_EN.md)
 
-A lightweight static web tool for converting MCP installation commands copied from the `iflow` platform to make them compatible with PowerShell 7 environment.
+A lightweight tool providing both web and Chrome extension versions for converting MCP installation commands copied from the `iflow` platform to make them compatible with PowerShell 7 environment.
 
 ## 🚀 Features
 
@@ -16,15 +16,35 @@ A lightweight static web tool for converting MCP installation commands copied fr
 - **One-click Copy**: Click buttons to copy converted commands to clipboard
 - **Clean Interface**: Professional and user-friendly UI design
 - **Pure Frontend**: No server required, runs entirely in the browser
+- **Chrome Extension**: Convenient browser extension for anytime use
 
 ## 📖 Usage Guide
 
-### Basic Usage
+### 🌐 Web Version Usage
 
-1. Open the tool page
+1. Open the [GitHub Pages](https://albert-lsk.github.io/iflow-mcp-helper/) page
 2. Paste the original command copied from the `iflow` platform into the input box
 3. View the conversion results in the two output boxes below
 4. Click the "Copy" button to copy the desired version to clipboard
+
+### 🧩 Chrome Extension Usage
+
+1. **Install Extension**:
+   - Download extension files locally
+   - Open `chrome://extensions/` in Chrome
+   - Enable "Developer mode"
+   - Click "Load unpacked extension" and select the project folder
+
+2. **Use Extension**:
+   - Click the extension icon in Chrome toolbar
+   - Paste the original command in the popup window
+   - View conversion results and copy the desired version
+
+### Basic Operations
+
+1. Paste the original command copied from the `iflow` platform into the input box
+2. View the conversion results in the two output boxes below
+3. Click the "Copy" button to copy the desired version to clipboard
 
 ### Supported Command Formats
 
@@ -56,21 +76,30 @@ The tool supports the following command formats:
 
 ```
 iflow-mcp-helper/
-├── index.html          # Main page
+├── manifest.json       # Chrome extension configuration
+├── popup.html          # Extension popup page
+├── index.html          # Web version main page
 ├── style.css           # Stylesheet
 ├── script.js           # Conversion logic
-└── README.md           # Project documentation
+├── images/             # Extension icons folder
+│   └── icon_placeholder.txt
+├── README.md           # Chinese documentation
+├── README_EN.md        # English documentation
+└── LICENSE             # License
 ```
 
 ## 🌐 Online Usage
 
-Visit [GitHub Pages](https://your-username.github.io/iflow-mcp-helper) to use the tool directly.
+- **Web Version**: Visit [GitHub Pages](https://albert-lsk.github.io/iflow-mcp-helper/) to use the tool directly
+- **Chrome Extension**: Download and install the extension for anytime use in your browser
 
 ## 💻 Local Development
 
+### Web Version Local Setup
+
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/iflow-mcp-helper.git
+   git clone https://github.com/Albert-Lsk/iflow-mcp-helper.git
    cd iflow-mcp-helper
    ```
 
@@ -86,6 +115,14 @@ Visit [GitHub Pages](https://your-username.github.io/iflow-mcp-helper) to use th
    ```
 
 3. Visit `http://localhost:8000`
+
+### Chrome Extension Local Installation
+
+1. Clone repository (same as above)
+2. Prepare extension icon files (16px, 48px, 128px)
+3. Open `chrome://extensions/` in Chrome
+4. Enable "Developer mode"
+5. Click "Load unpacked extension" and select the project folder
 
 ## 🔧 Technical Implementation Details
 
@@ -125,10 +162,17 @@ Contributions are welcome! Please follow these steps:
 <details>
 <summary>Version History</summary>
 
+### v1.1.0 (2024-10-29)
+- 🧩 Added Chrome extension version
+- ✨ Optimized extension interface layout and styling
+- ✨ Added GitHub project link
+- 🔧 Enhanced copy function compatibility
+- 📱 Adapted for extension popup window size
+
 ### v1.0.0 (2024-10-29)
 - ✨ Initial release
 - ✨ Basic command conversion functionality
-- ✨ Single quote and backtick version output
+- ✨ Single quote and double quote version output
 - ✨ One-click copy functionality
 - ✨ Responsive UI design
 

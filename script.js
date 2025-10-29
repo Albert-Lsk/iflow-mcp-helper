@@ -85,21 +85,56 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // 复制功能
     function copyToClipboard(text, button) {
-        navigator.clipboard.writeText(text).then(() => {
-            // 显示"已复制"效果
-            const originalText = button.textContent;
-            button.textContent = '已复制！';
-            button.classList.add('copied');
+        // 在 Chrome 插件环境中，优先使用 document.execCommand 作为备选方案
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(text).then(() => {
+                showCopySuccess(button);
+            }).catch(err => {
+                console.error('Clipboard API failed:', err);
+                fallbackCopyToClipboard(text, button);
+            });
+        } else {
+            fallbackCopyToClipboard(text, button);
+        }
+    }
+    
+    // 备选复制方案
+    function fallbackCopyToClipboard(text, button) {
+        try {
+            const textArea = document.createElement('textarea');
+            textArea.value = text;
+            textArea.style.position = 'fixed';
+            textArea.style.left = '-999999px';
+            textArea.style.top = '-999999px';
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
             
-            // 2秒后恢复
-            setTimeout(() => {
-                button.textContent = originalText;
-                button.classList.remove('copied');
-            }, 2000);
-        }).catch(err => {
-            console.error('复制失败:', err);
+            const successful = document.execCommand('copy');
+            document.body.removeChild(textArea);
+            
+            if (successful) {
+                showCopySuccess(button);
+            } else {
+                throw new Error('execCommand failed');
+            }
+        } catch (err) {
+            console.error('Fallback copy failed:', err);
             alert('复制失败，请手动复制');
-        });
+        }
+    }
+    
+    // 显示复制成功效果
+    function showCopySuccess(button) {
+        const originalText = button.textContent;
+        button.textContent = '已复制！';
+        button.classList.add('copied');
+        
+        // 2秒后恢复
+        setTimeout(() => {
+            button.textContent = originalText;
+            button.classList.remove('copied');
+        }, 2000);
     }
 
     // 为复制按钮添加事件监听器

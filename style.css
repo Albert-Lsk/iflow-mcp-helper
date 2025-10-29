@@ -1,23 +1,27 @@
 body {
     font-family: Arial, sans-serif;
     margin: 0;
-    padding: 20px;
+    padding: 0;
     background-color: #f5f5f5;
+    width: 380px;
+    min-height: 500px;
+    box-sizing: border-box;
 }
 
 .container {
-    max-width: 800px;
-    margin: 0 auto;
+    width: 100%;
     background-color: white;
-    padding: 30px;
+    padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
 }
 
 h1 {
     text-align: center;
     color: #333;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
+    font-size: 18px;
 }
 
 .input-section,
@@ -40,10 +44,11 @@ textarea {
     font-family: 'Courier New', monospace;
     font-size: 14px;
     box-sizing: border-box;
+    resize: none;
 }
 
 #inputCommand {
-    height: 100px;
+    height: 80px;
     resize: vertical;
 }
 
@@ -90,4 +95,32 @@ textarea {
     border-radius: 4px;
     font-size: 12px;
     white-space: nowrap;
+    z-index: 1000;
+}
+
+.github-link {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    font-size: 12px;
+    color: #666;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 8px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.github-link:hover {
+    color: #0366d6;
+    background-color: rgba(255, 255, 255, 1);
+    text-decoration: none;
+}
+
+.github-link::before {
+    content: "⭐";
+    font-size: 14px;
 }

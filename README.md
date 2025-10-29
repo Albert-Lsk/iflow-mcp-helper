@@ -1,30 +1,50 @@
 # iflow MCP 助手 (PowerShell 专用)
 
-[![GitHub stars](https://img.shields.io/github/stars/your-username/iflow-mcp-helper.svg?style=social&label=Star)](https://github.com/your-username/iflow-mcp-helper)
-[![GitHub forks](https://img.shields.io/github/forks/your-username/iflow-mcp-helper.svg?style=social&label=Fork)](https://github.com/your-username/iflow-mcp-helper)
-[![GitHub license](https://img.shields.io/github/license/your-username/iflow-mcp-helper.svg)](https://github.com/your-username/iflow-mcp-helper/blob/main/LICENSE)
-[![GitHub release](https://img.shields.io/github/release/your-username/iflow-mcp-helper.svg)](https://github.com/your-username/iflow-mcp-helper/releases)
+[![GitHub stars](https://img.shields.io/github/stars/Albert-Lsk/iflow-mcp-helper.svg?style=social&label=Star)](https://github.com/Albert-Lsk/iflow-mcp-helper)
+[![GitHub forks](https://img.shields.io/github/forks/Albert-Lsk/iflow-mcp-helper.svg?style=social&label=Fork)](https://github.com/Albert-Lsk/iflow-mcp-helper)
+[![GitHub license](https://img.shields.io/github/license/Albert-Lsk/iflow-mcp-helper.svg)](https://github.com/Albert-Lsk/iflow-mcp-helper/blob/main/LICENSE)
+[![GitHub release](https://img.shields.io/github/release/Albert-Lsk/iflow-mcp-helper.svg)](https://github.com/Albert-Lsk/iflow-mcp-helper/releases)
 [![Language](https://img.shields.io/badge/language-中文-blue.svg)](README.md)
 [![Language](https://img.shields.io/badge/language-English-red.svg)](README_EN.md)
 
-一个轻量级的静态网页工具，用于转换从 `iflow` 平台 https://platform.iflow.cn/mcp 复制的 MCP 安装命令，使其兼容 PowerShell 7 环境。
+一个轻量级的工具，提供网页版和 Chrome 插件版，用于转换从 `iflow` 平台复制的 MCP 安装命令，使其兼容 PowerShell 7 环境。
 
 ## 🚀 功能特点
 
 - **实时转换**：输入命令后立即显示转换结果
-- **双版本输出**：提供单引号版本和双引号版本两种 PowerShell 兼容格式
+- **双版本输出**：提供单引号版和双引号版两种 PowerShell 兼容格式
 - **一键复制**：点击按钮即可复制转换后的命令到剪贴板
 - **简洁界面**：专业、易用的用户界面设计
 - **纯前端实现**：无需服务器，完全在浏览器中运行
+- **Chrome 插件版**：提供便捷的浏览器插件，随时可用
 
 ## 📖 使用说明
 
-### 基本使用
+### 🌐 网页版使用
 
-1. 打开工具页面
+1. 打开 [GitHub Pages](https://albert-lsk.github.io/iflow-mcp-helper/) 页面
 2. 将从 `iflow` 平台复制的原始命令粘贴到输入框中
 3. 查看下方两个输出框中的转换结果
 4. 点击"复制"按钮将需要的版本复制到剪贴板
+
+### 🧩 Chrome 插件版使用
+
+1. **安装插件**：
+   - 下载插件文件到本地
+   - 在 Chrome 中打开 `chrome://extensions/`
+   - 开启"开发者模式"
+   - 点击"加载已解压的扩展程序"，选择项目文件夹
+
+2. **使用插件**：
+   - 点击 Chrome 工具栏中的插件图标
+   - 在弹出窗口中粘贴原始命令
+   - 查看转换结果并复制需要的版本
+
+### 基本操作
+
+1. 将从 `iflow` 平台复制的原始命令粘贴到输入框中
+2. 查看下方两个输出框中的转换结果
+3. 点击"复制"按钮将需要的版本复制到剪贴板
 
 ### 支持的命令格式
 
@@ -56,21 +76,30 @@
 
 ```
 iflow-mcp-helper/
-├── index.html          # 主页面
+├── manifest.json       # Chrome 插件配置文件
+├── popup.html          # 插件弹出页面
+├── index.html          # 网页版主页面
 ├── style.css           # 样式表
 ├── script.js           # 转换逻辑
-└── README.md           # 项目文档
+├── images/             # 插件图标文件夹
+│   └── icon_placeholder.txt
+├── README.md           # 中文项目文档
+├── README_EN.md        # 英文项目文档
+└── LICENSE             # 许可证
 ```
 
 ## 🌐 在线使用
 
-访问 [GitHub Pages](https://your-username.github.io/iflow-mcp-helper) 直接使用工具。
+- **网页版**：访问 [GitHub Pages](https://albert-lsk.github.io/iflow-mcp-helper/) 直接使用工具
+- **Chrome 插件版**：下载并安装插件，在浏览器中随时使用
 
 ## 💻 本地运行
 
+### 网页版本地运行
+
 1. 克隆仓库：
    ```bash
-   git clone https://github.com/your-username/iflow-mcp-helper.git
+   git clone https://github.com/Albert-Lsk/iflow-mcp-helper.git
    cd iflow-mcp-helper
    ```
 
@@ -86,6 +115,14 @@ iflow-mcp-helper/
    ```
 
 3. 访问 `http://localhost:8000`
+
+### Chrome 插件版本地安装
+
+1. 克隆仓库（同上）
+2. 准备插件图标文件（16px, 48px, 128px）
+3. 在 Chrome 中打开 `chrome://extensions/`
+4. 开启"开发者模式"
+5. 点击"加载已解压的扩展程序"，选择项目文件夹
 
 ## 🔧 转换逻辑详解
 
@@ -125,10 +162,17 @@ iflow-mcp-helper/
 <details>
 <summary>版本历史</summary>
 
+### v1.1.0 (2024-10-29)
+- 🧩 新增 Chrome 插件版本
+- ✨ 优化插件界面布局和样式
+- ✨ 添加 GitHub 项目链接
+- 🔧 增强复制功能的兼容性
+- 📱 适配插件弹出窗口尺寸
+
 ### v1.0.0 (2024-10-29)
 - ✨ 初始版本发布
 - ✨ 支持基本命令转换功能
-- ✨ 实现单引号版和反引号版输出
+- ✨ 实现单引号版和双引号版输出
 - ✨ 添加一键复制功能
 - ✨ 响应式界面设计
 
