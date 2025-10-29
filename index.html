@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iflow MCP 助手 (PowerShell 专用)</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>iflow MCP 助手 (PowerShell 专用)</h1>
+        
+        <div class="input-section">
+            <label for="inputCommand">粘贴原始命令:</label>
+            <textarea id="inputCommand" placeholder="在此粘贴从 iflow 平台复制的命令..."></textarea>
+        </div>
+        
+        <div class="output-section">
+            <div class="output-item">
+                <div class="output-header">
+                    <label for="outputSingleQuote">PowerShell (单引号版):</label>
+                    <button id="copySingleQuote" class="copy-button">复制</button>
+                </div>
+                <textarea id="outputSingleQuote" readonly></textarea>
+            </div>
+            
+            <div class="output-item">
+                <div class="output-header">
+                    <label for="outputBacktick">PowerShell (双引号版):</label>
+                    <button id="copyBacktick" class="copy-button">复制</button>
+                </div>
+                <textarea id="outputBacktick" readonly></textarea>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
